@@ -352,11 +352,3 @@ models/kobert_multilabel/
 - 최신 보이스피싱 사례 자동 업데이트
 
 ---
-
-# 👨‍💻 Team
-
-AI Hackathon Project
-
-**AnsimCall Guard**
-
-2026
