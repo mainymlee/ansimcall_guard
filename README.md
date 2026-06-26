@@ -361,9 +361,18 @@ models/kobert_multilabel/
 
 ---
 
-### 대응 문구 추천
+## 🧠 Conversation Memory
 
-![Recommendation](docs/recommendation_screen.png)
+AnsimCall Guard는 현재 발화만 분석하지 않습니다.
+
+이전 대화 내용을 계속 기억하여
+통화의 전체 문맥을 기반으로 위험도를 계산합니다.
+
+예를 들어 현재 발화에서 위험 키워드가 발견되지 않아도,
+이전 대화에서 검찰 사칭, 안전계좌, 송금 요구 등이 있었다면
+누적 위험도를 유지하여 사용자를 보호합니다.
+
+![Conversation Memory](docs/conversation_memory.png)
 
 # 향후 개선 계획
 
