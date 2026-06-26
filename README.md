@@ -275,12 +275,6 @@ streamlit run app.py
 
 ---
 
-## Similar Case Retrieval
-
-<img src="images/dashboard_case.png" width="900">
-
----
-
 # 🚀 Future Work
 
 - 경찰청 신고 API 연동
