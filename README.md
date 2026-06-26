@@ -341,6 +341,30 @@ models/kobert_multilabel/
 
 ---
 
+## 📷 Demo
+
+### 메인 화면
+
+![Main](docs/main_screen.png)
+
+---
+
+### 실시간 분석
+
+![Analysis](docs/analysis_screen.png)
+
+---
+
+### 위험도 상승 (Conversation Memory)
+
+![Risk](docs/risk_screen.png)
+
+---
+
+### 대응 문구 추천
+
+![Recommendation](docs/recommendation_screen.png)
+
 # 향후 개선 계획
 
 - 실시간 Streaming STT
