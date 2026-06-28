@@ -275,7 +275,7 @@ streamlit run app.py
 ---
 
 ## Call
-<ima src="imgaes/dashboard_call.png" width="900">
+<ima src="images/dashboard_call.png" width="900">
 
 # 🚀 Future Work
 
