@@ -275,8 +275,9 @@ streamlit run app.py
 ---
 
 ## Call
-<ima src="images/dashboard_call.png" width="900">
+<img src="images/dashboard_call.png" width="900">
 
+---
 # 🚀 Future Work
 
 - 경찰청 신고 API 연동
