@@ -358,6 +358,14 @@ streamlit run app.py
 
 ---
 
+# 🏗 시스템 아키텍처
+
+<p align="center">
+<a href="images/architecture.png">
+<img src="images/architecture.png" width="1200">
+</a>
+</p>
+
 # 🚀 향후 계획
 
 - 경찰청 신고 API 연동
@@ -368,12 +376,6 @@ streamlit run app.py
 - 실시간 전화 앱 연동
 
 ---
-
-# 👨‍💻 Team
-
-**AnsimCall Guard**
-
-AI 기반 보이스피싱 탐지 및 대응 시스템
 
 ### 핵심 기술
 
