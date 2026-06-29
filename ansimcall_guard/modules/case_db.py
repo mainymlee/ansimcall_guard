@@ -2,7 +2,8 @@ import json
 from pathlib import Path
 from rapidfuzz import fuzz
 
-DB_PATH = Path("data/multilabel_cases.json")
+BASE_DIR = Path(__file__).resolve().parent.parent
+DB_PATH = BASE_DIR / "data" / "multilabel_cases.json"
 
 def load_cases():
     return json.loads(DB_PATH.read_text(encoding="utf-8"))
