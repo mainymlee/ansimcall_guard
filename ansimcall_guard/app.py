@@ -5,13 +5,15 @@ import pandas as pd
 import streamlit as st
 from dotenv import load_dotenv
 
-from modules.audio_recorder import list_input_devices, record_audio
-from modules.stt_engine import transcribe_audio
 from modules.analysis_engine import analyze_call_text
 from modules.kobert_multilabel import KoBERTMultiLabelPredictor
 from modules.case_db import export_training_rows, load_cases
 from modules.llm_verifier import apply_llm_verification
 from modules.report_manager import save_report_case, load_reported_cases
+
+import os
+
+IS_CLOUD = os.getenv("STREAMLIT_SERVER_HEADLESS", "false") == "true"
 
 load_dotenv()
 
@@ -710,11 +712,6 @@ if st.session_state.page == "main":
         duration = st.slider("녹음 시간", 10, 30, 10)
         model_size = st.selectbox("Whisper 모델", ["tiny", "base", "small"], index=2)
 
-        devices = list_input_devices()
-        labels = ["기본 마이크"] + [f"{d['id']} - {d['name']}" for d in devices]
-        chosen = st.selectbox("입력 장치", labels)
-        device = None if chosen == "기본 마이크" else int(chosen.split(" - ")[0])
-
         st.divider()
         st.subheader("KoBERT 상태")
         if predictor.available:
@@ -794,37 +791,8 @@ if st.session_state.page == "main":
             )
 
         if do_record:
-            wav_path = Path(tempfile.gettempdir()) / f"ansimcall_{datetime.now().strftime('%H%M%S')}.wav"
-
-            with st.spinner(f"{duration}초 동안 녹음 중입니다..."):
-                try:
-                    record_audio(str(wav_path), duration=duration, samplerate=16000, device=device)
-                except Exception as e:
-                    st.error(f"녹음 오류: {e}")
-                    st.stop()
-
-            st.audio(str(wav_path))
-
-            with st.spinner("Whisper STT 변환 중입니다..."):
-                try:
-                    current_text = transcribe_audio(str(wav_path), model_size=model_size)
-                except Exception as e:
-                    st.error(f"STT 오류: {e}")
-                    st.stop()
-
-            if current_text:
-                st.session_state.conversation_memory.append(current_text)
-
-            conversation_text = "\n".join(st.session_state.conversation_memory[-10:])
-            result = analyze_call_text(current_text=current_text, conversation_text=conversation_text, predictor=predictor)
-
-            if result.get("risk_score", 0) >= 60:
-                with st.spinner("LLM 2차 검증 중입니다..."):
-                    result = apply_llm_verification(result, threshold=60)
-
-            st.session_state.history.append(result)
-            st.session_state.current_result = result
-            st.rerun()
+            st.info("배포 버전에서는 마이크 녹음을 지원하지 않습니다. 위쪽의 '단계별 텍스트 데모' 탭에서 시연해주세요.")
+            st.stop()
 
     with tab2:
         st.markdown("발표 데모용입니다. 아래 대사를 하나씩 누르면 통화가 이어지는 것처럼 누적 분석됩니다.")
