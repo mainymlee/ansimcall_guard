@@ -1,7 +1,5 @@
 streamlit
 faster-whisper
-sounddevice
-soundfile
 numpy
 pandas
 scikit-learn
