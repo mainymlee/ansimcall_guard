@@ -792,7 +792,6 @@ if st.session_state.page == "main":
 
         if do_record:
             st.info("배포 버전에서는 마이크 녹음을 지원하지 않습니다. 위쪽의 '단계별 텍스트 데모' 탭에서 시연해주세요.")
-            st.stop()
 
     with tab2:
         st.markdown("발표 데모용입니다. 아래 대사를 하나씩 누르면 통화가 이어지는 것처럼 누적 분석됩니다.")
